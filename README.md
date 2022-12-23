@@ -3,7 +3,7 @@
 ## A Robust and Effective LiDAR-SLAM System with Learning-based Denoising and Loop Closure
 
 
-## Front_end : Fast LiDAR-Inertial Odometry + D-Net   Back_end Tightly-coupled Lidar Inertial Odometry + LC-Net: 
+Front_end : Fast LiDAR-Inertial Odometry + D-Net   Back_end Tightly-coupled Lidar Inertial Odometry + LC-Net
 
 
 ## Summary of the merits of our works based on previous works:
