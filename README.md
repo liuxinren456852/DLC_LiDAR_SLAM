@@ -1,4 +1,4 @@
-# FAST_LIO_SLAM_LCD
+# FAST_DLC_SLAM
 
 ## A Robust and Effective LiDAR-SLAM System with Learning-based Denoising and Loop Closure
 

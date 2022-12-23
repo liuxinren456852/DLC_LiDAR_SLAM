@@ -1,4 +1,4 @@
-# FAST_LIO_SAM_LCD
+# FAST_DLC_SLAM
 
 ## Front_end : fastlio2      Back_end : lio_sam
 
