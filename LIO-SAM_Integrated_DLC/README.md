@@ -2,11 +2,11 @@
 
 ## Front_end : fastlio2      Back_end : lio_sam
 
-## A Robust and Effective LiDAR-SLAM System with Learning-based Denoising and Loop Closure
+A Robust and Effective LiDAR-SLAM System with Learning-based Denoising and Loop Closure
 
 ## Summary of the merits of our works based on previous works:
 
-1.[FAST-LIO2]: The tightly coupled lio slam system lacks global consistency because of its lack of front-end. Refer to the back-end part of lio_sam and connect to GTSAM for back-end optimization.
+1.FAST-LIO2: The tightly coupled lio slam system lacks global consistency because of its lack of front-end. Refer to the back-end part of lio_sam and connect to GTSAM for back-end optimization.
 
 
 
