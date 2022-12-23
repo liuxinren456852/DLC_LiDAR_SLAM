@@ -207,14 +207,3 @@ when you want to see the path in the Map [satellite map](http://dict.youdao.com/
 6.LIO-SAM uses **ekf_localization_node** this ROS Package to transfer the GPS WGS84 coordinate system to the World system. FAST-LIO-SAM considers decoupling with the external ROS package as much as possible, and calls **GeographicLib** for coordinate conversion.
 
 
-
-## some problems:
-
-1. The longitude and latitude high noise covariance of GNSS has not been converted to the World system, and the latitude longitude cov noise is temporarily used as the cov nosie in the x and y directions.
-
-
-2. The ENU coordinate system should be used, but the coordinate system obtained after using **GeographicLib** conversion is in the NED coordinate system. The reason is not clear yet and needs to be resolved. (X: E Y: N Z: -D ).
-
-
-3. When running a large data set (600s), occasionally the program crashes, and the problem has not been located for the time being, and it needs to be resolved.
-

@@ -95,9 +95,6 @@ evo plot trajectories.
 evo_traj kitti optimized_pose.txt without_optimized_pose.txt -p
 ```
 
-| ![evo1](https://kaho-pic-1307106074.cos.ap-guangzhou.myqcloud.com/CSDN_Pictures/%E6%B7%B1%E8%93%9D%E5%A4%9A%E4%BC%A0%E6%84%9F%E5%99%A8%E8%9E%8D%E5%90%88%E5%AE%9A%E4%BD%8D/%E7%AC%AC%E4%BA%8C%E7%AB%A0%E6%BF%80%E5%85%89%E9%87%8C%E7%A8%8B%E8%AE%A11evo1.png) | ![evo2](https://kaho-pic-1307106074.cos.ap-guangzhou.myqcloud.com/CSDN_Pictures/%E6%B7%B1%E8%93%9D%E5%A4%9A%E4%BC%A0%E6%84%9F%E5%99%A8%E8%9E%8D%E5%90%88%E5%AE%9A%E4%BD%8D/%E7%AC%AC%E4%BA%8C%E7%AB%A0%E6%BF%80%E5%85%89%E9%87%8C%E7%A8%8B%E8%AE%A11evo2.png) |
-| ------------------------------------------------------------ | ------------------------------------------------------------ |
-
 #### 5.some config 
 
 ```shell
@@ -134,10 +131,6 @@ rosbag  play  parking_dataset.bag
 
 Line Color define:  path_no_optimized(blue)、path_updated(red)、path_gnss(green)
 
-![gps_optimized_path](https://kaho-pic-1307106074.cos.ap-guangzhou.myqcloud.com/CSDN_Pictures/%E6%B7%B1%E8%93%9D%E5%A4%9A%E4%BC%A0%E6%84%9F%E5%99%A8%E8%9E%8D%E5%90%88%E5%AE%9A%E4%BD%8D/%E7%AC%AC%E4%BA%8C%E7%AB%A0%E6%BF%80%E5%85%89%E9%87%8C%E7%A8%8B%E8%AE%A11gps_optimized_path.gif)
-
-![gps_optimized_with_map](https://kaho-pic-1307106074.cos.ap-guangzhou.myqcloud.com/CSDN_Pictures/%E6%B7%B1%E8%93%9D%E5%A4%9A%E4%BC%A0%E6%84%9F%E5%99%A8%E8%9E%8D%E5%90%88%E5%AE%9A%E4%BD%8D/%E7%AC%AC%E4%BA%8C%E7%AB%A0%E6%BF%80%E5%85%89%E9%87%8C%E7%A8%8B%E8%AE%A11gps_optimized_with_map.gif)
-
 #### 2.save_map
 
 Enter the following command into the terminal, the map file will be saved in the appropriate folder:
@@ -169,10 +162,6 @@ evo plot trajectories:
 evo_traj kitti gnss_pose.txt optimized_pose.txt  -p
 ```
 
-| FAST-LIO  (no gnss prior factor)                             | FAST-LIO-SAM  (with gnss prior factor)                       |
-| ------------------------------------------------------------ | ------------------------------------------------------------ |
-| ![evo_no_optimized](https://kaho-pic-1307106074.cos.ap-guangzhou.myqcloud.com/CSDN_Pictures/%E6%B7%B1%E8%93%9D%E5%A4%9A%E4%BC%A0%E6%84%9F%E5%99%A8%E8%9E%8D%E5%90%88%E5%AE%9A%E4%BD%8D/%E7%AC%AC%E4%BA%8C%E7%AB%A0%E6%BF%80%E5%85%89%E9%87%8C%E7%A8%8B%E8%AE%A11evo_no_optimized.png) | ![evo_optimized](https://kaho-pic-1307106074.cos.ap-guangzhou.myqcloud.com/CSDN_Pictures/%E6%B7%B1%E8%93%9D%E5%A4%9A%E4%BC%A0%E6%84%9F%E5%99%A8%E8%9E%8D%E5%90%88%E5%AE%9A%E4%BD%8D/%E7%AC%AC%E4%BA%8C%E7%AB%A0%E6%BF%80%E5%85%89%E9%87%8C%E7%A8%8B%E8%AE%A11evo_optimized.png) |
-
 
 
 #### 4.some config 
@@ -196,16 +185,16 @@ when you want to see the path in the Map [satellite map](http://dict.youdao.com/
 
 ## Attention:
 
-1.In FAST-LIO2, the pose attitude is represented by so3, while in gtsam, the input relative_pose attitude is expressed in Euler RPY form, which needs to be converted and updated using Rodriguez's formula.
+1. In FAST-LIO2, the pose attitude is represented by so3, while in gtsam, the input relative_pose attitude is expressed in Euler RPY form, which needs to be converted and updated using Rodriguez's formula.
 
 2. iktree  reconstruct 
 
-3.In the walking data set, because some data are constantly holding the rotating lidar at the same place, the angle of the rotating lidar reaches the threshold for saving key frames. In a short period of time, multiple similar key frames are saved, causing ISAM2 to appear. If the feature degrades and the odometer runs away, the threshold parameters for key frame selection can be adjusted appropriately according to the data set.
+3. In the walking data set, because some data are constantly holding the rotating lidar at the same place, the angle of the rotating lidar reaches the threshold for saving key frames. In a short period of time, multiple similar key frames are saved, causing ISAM2 to appear. If the feature degrades and the odometer runs away, the threshold parameters for key frame selection can be adjusted appropriately according to the data set.
 
-4.Add the diamante part of the GPS prior prior factor, refer to the prior factor part of lio_sam, compared withFAST-LIO-SLAM, FAST-LIO-SLAM only uses the high-level constraints of GPS, and does not use constraints in the xy direction. However, the error of GPS in the high layer (Z axis) is relatively large, and it is easy to introduce errors in the optimization process.
+4. Add the diamante part of the GPS prior prior factor, refer to the prior factor part of lio_sam, compared withFAST-LIO-SLAM, FAST-LIO-SLAM only uses the high-level constraints of GPS, and does not use constraints in the xy direction. However, the error of GPS in the high layer (Z axis) is relatively large, and it is easy to introduce errors in the optimization process.
 
-5.Among the GPS prior factors, **"useGpsElevation"** selects the high-level constraint of GPS, which is not used by default, because the high-level noise of GPS is relatively large.
+5. Among the GPS prior factors, **"useGpsElevation"** selects the high-level constraint of GPS, which is not used by default, because the high-level noise of GPS is relatively large.
 
-6.LIO-SAM uses **ekf_localization_node** this ROS Package to transfer the GPS WGS84 coordinate system to the World system. FAST-LIO-SAM considers decoupling with the external ROS package as much as possible, and calls **GeographicLib** for coordinate conversion.
+6. LIO-SAM uses **ekf_localization_node** this ROS Package to transfer the GPS WGS84 coordinate system to the World system. FAST-LIO-SAM considers decoupling with the external ROS package as much as possible, and calls **GeographicLib** for coordinate conversion.
 
 
